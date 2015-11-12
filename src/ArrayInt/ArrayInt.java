@@ -68,18 +68,6 @@ public final class ArrayInt {
         return extenArr;
     }
 
-    /* public static int[] sortMas(int[] mas){
-         if(mas==null){
-             return null;
-         }
-         int left, right;
-         left=0;
-         right=mas.length-1;
-         double mediana=(mas[0]+mas[right])/2;
-         for(; mas[left]<mediana; left++){
-
-         }
-     }*/
     public static int[] cpyArray(int[] cpyMas) {
         if (cpyMas == null) {
             return null;
