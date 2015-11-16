@@ -1,7 +1,7 @@
 public class Matrix {
+    private double[][] matrix;
     private int line;
     private int column;
-    private double[][] matrix;
 
     Matrix() {
         line = 10;
