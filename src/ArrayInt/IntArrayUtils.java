@@ -49,31 +49,20 @@ public final class IntArrayUtils {
         return arr;
     }
 
-    public static int[] cpyArray(int[] cpyarr) {
-        if (cpyarr == null) {
-            return null;
-        }
-        int[] newarr = new int[cpyarr.length];
-        for (int i = 0; i < cpyarr.length; i++) {
-            newarr[i] = cpyarr[i];
-        }
-        return newarr;
-    }
-
-    public static boolean compareArrays(int[] firstarr, int[] secondarr) {
-        if (firstarr == null && secondarr == null) {
+    public static boolean compareExcludOrder(int[] firstArr, int[] secondArr) {
+        if (firstArr == null && secondArr == null) {
             return true;
         }
-        if (firstarr == null || secondarr == null || firstarr.length != secondarr.length) {
+        if (firstArr == null || secondArr == null || firstArr.length != secondArr.length) {
             return false;
         }
-        int[] firstArr = cpyArray(firstarr);
-        int[] secondArr = cpyArray(secondarr);
-        Arrays.sort(firstArr);
-        Arrays.sort(secondArr);
+        int[] firArr = Arrays.copyOf(firstArr, firstArr.length);
+        int[] secArr = Arrays.copyOf(secondArr, secondArr.length);
+        Arrays.sort(firArr);
+        Arrays.sort(secArr);
         boolean flag = true;
-        for (int i = 0; i < firstArr.length; i++) {
-            if (firstArr[i] != secondArr[i]) {
+        for (int i = 0; i < firArr.length; i++) {
+            if (firArr[i] != secArr[i]) {
                 flag = false;
                 break;
             }
@@ -85,15 +74,15 @@ public final class IntArrayUtils {
         if (arr == null) {
             return null;
         }
-        int[] randarr = cpyArray(arr);
+        int[] randArr = Arrays.copyOf(arr, arr.length);
         int index, cur;
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
-            index = abs(random.nextInt()) % randarr.length;
-            cur = randarr[index];
-            randarr[index] = randarr[i];
-            randarr[i] = cur;
+            index = abs(random.nextInt()) % randArr.length;
+            cur = randArr[index];
+            randArr[index] = randArr[i];
+            randArr[i] = cur;
         }
-        return randarr;
+        return randArr;
     }
 }
