@@ -4,6 +4,9 @@ public class Matrix {
     private int column;
 
     Matrix(int rows, int column) {
+        if (rows < 0 || column < 0) {
+            matrix = null;
+        }
         this.rows = rows;
         this.column = column;
         matrix = new double[rows][column];
@@ -24,14 +27,14 @@ public class Matrix {
             }
         }
     }
-    
+
     public void print() {
         if (matrix == null) {
             System.out.println("Matrix = null");
             return;
         }
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < column; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
@@ -39,10 +42,10 @@ public class Matrix {
     }
 
     public double getElem(int i, int j) {
-        if (i >= 0 && i < matrix.length && j >= 0 && j < matrix[0].length) {
+        if (i >= 0 && i < rows && j >= 0 && j < column) {
             return matrix[i][j];
         } else {
-            System.out.println("wrong index");
+//            System.out.println("wrong index");
             return 0;
         }
     }
@@ -55,28 +58,27 @@ public class Matrix {
         return column;
     }
 
-    public boolean equally(double[][] firstMatrix, double[][] secondMatrix) {
-        if (firstMatrix == null && secondMatrix == null) {
+    public boolean equals(double[][] compareMatrix) {
+        if (matrix == null && compareMatrix == null) {
             return true;
         }
-        if (firstMatrix == null || secondMatrix == null) {
+        if (matrix == null || compareMatrix == null) {
             return false;
         }
-        if (firstMatrix.length != secondMatrix.length) {
+        if (matrix.length != compareMatrix.length) {
             return false;
         }
-        if (firstMatrix == null || secondMatrix == null) {
+        if (matrix == null || compareMatrix == null) {
             return false;
         }
-        boolean flag;
-        flag = true;
-        for (int i = 0; i < firstMatrix.length && flag; i++) {
-            if (firstMatrix[i].length != secondMatrix[i].length) {
+        boolean flag = true;
+        for (int i = 0; i < matrix.length && flag; i++) {
+            if (matrix[i].length != compareMatrix[i].length) {
                 flag = false;
                 break;
             }
-            for (int j = 0; j < firstMatrix[i].length; j++) {
-                if (firstMatrix[i][j] != secondMatrix[i][j]) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] != compareMatrix[i][j]) {
                     flag = false;
                     break;
                 }
@@ -94,30 +96,41 @@ public class Matrix {
         }
     }
 
-    public Matrix multipl(Matrix secondMatrix) {
-        if (matrix == null || secondMatrix == null) {
+    public double[] getColumn(double[][] Matrix, int column) {
+        double[] columnToMas = new double[Matrix.length];
+        for (int i = 0; i < Matrix.length; i++) {
+            columnToMas[i] = Matrix[i][column];
+        }
+        return columnToMas;
+    }
+
+    public double mulRowColumn(double[] firstMas, double[] secondMas) {
+        double sum = 0;
+        for (int i = 0; i < firstMas.length; i++) {
+            sum += firstMas[i] * secondMas[i];
+        }
+        return sum;
+    }
+
+    public Matrix multipl(Matrix secondMultipl) {
+        if (matrix == null || secondMultipl == null) {
             return null;
         }
-        if (this.rows != secondMatrix.getRows()) {
+        if (this.rows != secondMultipl.getRows()) {
             return null;
         }
-        int sum;
-        double[][] mulMatrix;
-        mulMatrix = new double[column][secondMatrix.getColumn()];
+        double[][] mulMatrix = new double[column][secondMultipl.getColumn()];
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < secondMatrix.getColumn(); j++) {
-                sum = 0;
-                for (int r = 0; r < secondMatrix.getRows(); r++) {
-                    sum += matrix[i][r] * secondMatrix.getElem(r, j);
-                }
+            for (int j = 0; j < secondMultipl.getColumn(); j++) {
+                double sum = mulRowColumn(this.matrix[i], getColumn(secondMultipl.matrix, j));
                 mulMatrix[i][j] = sum;
             }
         }
-        Matrix res = new Matrix(mulMatrix, column, secondMatrix.getColumn());
+        Matrix res = new Matrix(mulMatrix, column, secondMultipl.getColumn());
         return res;
     }
 
-    public Matrix addM(Matrix secondMatrix) {
+    public Matrix add(Matrix secondMatrix) {
         if (matrix == null || secondMatrix == null) {
             return null;
         }
@@ -163,7 +176,7 @@ public class Matrix {
         return transfDoubl;
     }
 
-    public static void changeRows(double[][] Mat, int i, int line) {
+    public void changeRows(double[][] Mat, int i, int line) {
         double cur;
         for (int p = i + 1; p < line; p++) {
             if (Mat[p][i] != 0) {
