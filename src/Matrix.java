@@ -1,7 +1,7 @@
 public class Matrix {
     private double[][] matrix;
-    private int rows;
-    private int column;
+    private final int rows;
+    private final int column;
 
 //    static void printMatrix(double[][] Matrix) {
 //        if (Matrix == null) {
