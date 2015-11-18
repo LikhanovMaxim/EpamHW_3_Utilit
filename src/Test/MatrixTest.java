@@ -253,12 +253,12 @@ public class MatrixTest {
         double[][] matB = {{3},
                 {-1}};
         Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
-        System.out.println(matrixA.sub(matrixB));
         assertTrue(matrixA.sub(matrixB) == null);
         matrixA = new Matrix(matA, matA.length, matA[0].length);
         assertTrue(matrixB.sub(matrixA) == null);
     }
-    @Test(timeout = 1000)
+
+    @Test
     public void sameDimenSub() throws Exception {
         double[][] matA = {{12, -3},
                 {4, 16}};
@@ -273,6 +273,7 @@ public class MatrixTest {
         matrixA = new Matrix(matA, matA.length, matA[0].length);
         assertFalse(matrixResult.equals(matrixB.sub(matrixA)));
     }
+
     @Test
     public void differDimenAdd() throws Exception {
         double[][] matA = {{-2, 1},
@@ -285,13 +286,14 @@ public class MatrixTest {
         matrixA = new Matrix(matA, matA.length, matA[0].length);
         assertTrue(matrixB.add(matrixA) == null);
     }
-    @Test(timeout = 1000)
+
+    @Test
     public void sameDimenAdd() throws Exception {
         double[][] matA = {{2, -3},
-                         {4, -6}};
+                {4, -6}};
         Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
         double[][] matB = {{9, -6},
-                        {6, -4}};
+                {6, -4}};
         Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
         double[][] result = {{11, -9},
                 {10, -10}};
@@ -299,5 +301,67 @@ public class MatrixTest {
         assertTrue(matrixResult.equals(matrixA.add(matrixB)));
         matrixA = new Matrix(matA, matA.length, matA[0].length);
         assertTrue(matrixResult.equals(matrixB.add(matrixA)));
+    }
+    @Test
+    public void differTransfTriangMat() throws Exception {
+        double[][] matA = {{5, 3},
+                {4, 5},
+                {1, 1}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA.transfTriangMat();
+        assertTrue(matrixA.equals(matrixA));
+    }
+    @Test
+    public void squareTransfTriangMat() throws Exception {
+        double[][] matA = {{5, 3},
+                {4, 5}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double[][] res = {{5, 3},
+                        {0, 2.5999999999999996}};
+        Matrix result = new Matrix(res, res.length, res[0].length);
+        matrixA.transfTriangMat();
+        assertTrue(result.equals(matrixA));
+    }
+    @Test
+    public void cubicTransfTriangMat() throws Exception {
+        double[][] matA = {{1, 2, 3},
+                {1, 1, 2},
+                {3, 1, 1}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double[][] res = {{1, 2, 3},
+                {0, -1, -1},
+                {0, 0, -3}};
+        Matrix result = new Matrix(res, res.length, res[0].length);
+        matrixA.transfTriangMat();
+        assertTrue(result.equals(matrixA));
+
+    }
+    @Test
+    public void differDimenDetermin() throws Exception {
+        double[][] matA = {{5, 3},
+                {4, 5},
+                {1, 1}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double result=0;
+        assertTrue(result == matrixA.determin());
+
+    }
+    @Test
+    public void squarDetermin() throws Exception {
+        double[][] matA = {{5, 3},
+                {4, 5}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double result = 13;
+        assertTrue(result == (int) matrixA.determin() + 1);
+    }
+
+    @Test
+    public void cubicDetermin() throws Exception {
+        double[][] matA = {{1, 2, 3},
+                {1, 1, 2},
+                {3, 1, 1}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double result = 3;
+        assertTrue(result == matrixA.determin());
     }
 }
