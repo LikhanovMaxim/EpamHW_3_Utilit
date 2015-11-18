@@ -214,7 +214,7 @@ public class MatrixTest {
     }
 
     @Test(timeout = 1000)
-    public void DifferDimenMultipl() throws Exception {
+    public void differDimenMultipl() throws Exception {
         double[][] matA = {{-2, 1},
                 {5, 4}};
         Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
@@ -230,7 +230,7 @@ public class MatrixTest {
     }
 
     @Test(timeout = 1000)
-    public void SameDimenMultipl() throws Exception {
+    public void sameDimenMultipl() throws Exception {
         double[][] matA = {{2, -3},
                 {4, -6}};
         Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
@@ -243,5 +243,61 @@ public class MatrixTest {
         assertTrue(matrixResult.equals(matrixA.multipl(matrixB)));
         matrixA = new Matrix(matA, matA.length, matA[0].length);
         assertFalse(matrixResult.equals(matrixB.multipl(matrixA)));
+    }
+
+    @Test
+    public void differDimenSub() throws Exception {
+        double[][] matA = {{-2, 1},
+                {5, 4}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double[][] matB = {{3},
+                {-1}};
+        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        System.out.println(matrixA.sub(matrixB));
+        assertTrue(matrixA.sub(matrixB) == null);
+        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        assertTrue(matrixB.sub(matrixA) == null);
+    }
+    @Test(timeout = 1000)
+    public void sameDimenSub() throws Exception {
+        double[][] matA = {{12, -3},
+                {4, 16}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double[][] matB = {{9, -6},
+                {6, -4}};
+        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        double[][] result = {{3, 3},
+                {-2, 20}};
+        Matrix matrixResult = new Matrix(result, result.length, result[0].length);
+        assertTrue(matrixResult.equals(matrixA.sub(matrixB)));
+        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        assertFalse(matrixResult.equals(matrixB.sub(matrixA)));
+    }
+    @Test
+    public void differDimenAdd() throws Exception {
+        double[][] matA = {{-2, 1},
+                {5, 4}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double[][] matB = {{3},
+                {-1}};
+        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        assertTrue(matrixA.add(matrixB) == null);
+        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        assertTrue(matrixB.add(matrixA) == null);
+    }
+    @Test(timeout = 1000)
+    public void sameDimenAdd() throws Exception {
+        double[][] matA = {{2, -3},
+                         {4, -6}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        double[][] matB = {{9, -6},
+                        {6, -4}};
+        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        double[][] result = {{11, -9},
+                {10, -10}};
+        Matrix matrixResult = new Matrix(result, result.length, result[0].length);
+        assertTrue(matrixResult.equals(matrixA.add(matrixB)));
+        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        assertTrue(matrixResult.equals(matrixB.add(matrixA)));
     }
 }
