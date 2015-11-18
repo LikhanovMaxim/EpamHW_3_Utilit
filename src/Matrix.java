@@ -223,15 +223,15 @@ public class Matrix {
         return res;
     }
 
-    public double[][] transfMatToDoubl() {
-        double[][] transfDoubl = new double[rows][column];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                transfDoubl[i][j] = matrix[i][j];
-            }
-        }
-        return transfDoubl;
-    }
+//    public double[][] transfMatToDoubl() {
+//        double[][] transfDoubl = new double[rows][column];
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < column; j++) {
+//                transfDoubl[i][j] = matrix[i][j];
+//            }
+//        }
+//        return transfDoubl;
+//    }
 
     public void changeRows(double[][] Mat, int i, int line) {
         double cur;
@@ -251,7 +251,7 @@ public class Matrix {
         if (matrix == null || rows != column) {
             return null;
         }
-        double[][] triangMat = this.transfMatToDoubl();
+        double[][] triangMat = matrix.clone();
         double cur;
         for (int i = 0; i < rows; i++) {
             if (triangMat[i][i] == 0) {
