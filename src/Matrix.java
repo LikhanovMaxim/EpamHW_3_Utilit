@@ -3,31 +3,31 @@ public class Matrix {
     private int rows;
     private int column;
 
-    static void printMatrix(double[][] Matrix) {
-        if (Matrix == null) {
-            System.out.println("Matrix = null");
-            return;
-        }
-        for (int rows = 0; rows < Matrix.length; rows++) {
-            for (int columns = 0; columns < Matrix[0].length; columns++) {
-                System.out.print(Matrix[rows][columns] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public void print() {
-        if (matrix == null) {
-            System.out.println("Matrix = null");
-            return;
-        }
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
+//    static void printMatrix(double[][] Matrix) {
+//        if (Matrix == null) {
+//            System.out.println("Matrix = null");
+//            return;
+//        }
+//        for (int rows = 0; rows < Matrix.length; rows++) {
+//            for (int columns = 0; columns < Matrix[0].length; columns++) {
+//                System.out.print(Matrix[rows][columns] + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
+//
+//    public void print() {
+//        if (matrix == null) {
+//            System.out.println("Matrix = null");
+//            return;
+//        }
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < column; j++) {
+//                System.out.print(matrix[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
 
     Matrix(int rows, int column) {
         if (rows < 0 || column < 0) {
@@ -223,16 +223,6 @@ public class Matrix {
         return res;
     }
 
-//    public double[][] transfMatToDoubl() {
-//        double[][] transfDoubl = new double[rows][column];
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < column; j++) {
-//                transfDoubl[i][j] = matrix[i][j];
-//            }
-//        }
-//        return transfDoubl;
-//    }
-
     public void changeRows(double[][] Mat, int i, int line) {
         double cur;
         for (int p = i + 1; p < line; p++) {
@@ -282,4 +272,14 @@ public class Matrix {
         }
         return det;
     }
+    //    public double[][] transfMatToDoubl() {
+//        double[][] transfDoubl = new double[rows][column];
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < column; j++) {
+//                transfDoubl[i][j] = matrix[i][j];
+//            }
+//        }
+//        return transfDoubl;
+//    }
 }
+
