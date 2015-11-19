@@ -369,4 +369,16 @@ public class MatrixTest {
         double result = 3;
         assertTrue(result == matrixA.determin());
     }
+
+    @Test
+    public void testClone() throws CloneNotSupportedException {
+        double[][] matA = {{1, 2, 3},
+                {1, 1, 2},
+                {3, 1, 1}};
+        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix result=(Matrix)matrixA.clone();
+        assertTrue(result.equals(matrixA));
+        result.setElem(1, 1, 17);
+        assertFalse(result.equals(matrixA));
+    }
 }

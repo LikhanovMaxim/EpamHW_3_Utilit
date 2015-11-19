@@ -1,7 +1,7 @@
 public class Matrix {
     private double[][] matrix;
-    private final int rows;
-    private final int column;
+    private int rows;
+    private int column;
 
 //    static void printMatrix(double[][] Matrix) {
 //        if (Matrix == null) {
@@ -16,18 +16,18 @@ public class Matrix {
 //        }
 //    }
 //
-//    public void print() {
-//        if (matrix == null) {
-//            System.out.println("Matrix = null");
-//            return;
-//        }
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < column; j++) {
-//                System.out.print(matrix[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
+    public void print() {
+        if (matrix == null) {
+            System.out.println("Matrix = null");
+            return;
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < column; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
     Matrix(int rows, int column) {
         if (rows < 0 || column < 0) {
@@ -271,6 +271,11 @@ public class Matrix {
             det *= triangMat.getElem(i, i);
         }
         return det;
+    }
+    @Override
+    public Matrix clone() throws CloneNotSupportedException {
+        Matrix cloneMat=new Matrix(this.matrix, this.getRows(), this.column);
+        return cloneMat;
     }
     //    public double[][] transfMatToDoubl() {
 //        double[][] transfDoubl = new double[rows][column];
