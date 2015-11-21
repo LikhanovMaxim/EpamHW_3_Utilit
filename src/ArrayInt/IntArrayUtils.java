@@ -9,22 +9,6 @@ public final class IntArrayUtils {
     private IntArrayUtils() {
     }
 
-//    public static void print(int[] arr) {
-//        if (arr == null) {
-//            System.out.println("The array is empty.");
-//            return;
-//        }
-//        int i;
-//        System.out.print("[");
-//        for (i = 0; i < arr.length - 1; i++) {
-//            System.out.print(arr[i] + ", ");
-//        }
-//        if (arr.length != 0) {
-//            System.out.print(arr[i]);
-//        }
-//        System.out.println("]");
-//    }
-
     public static int[] changeSize(int[] arr, int size) {
         if (size < 0) {
             return null;
