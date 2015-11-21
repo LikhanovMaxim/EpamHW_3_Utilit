@@ -57,14 +57,14 @@ public class IntArrayUtilsTest {
     }
 
     @Test(timeout = 1000)
-    public void nullCompareArrays() throws Exception {
+    public void nullCompareExcludOrder() throws Exception {
         int[] arr3 = {1, 2, 3};
         assertTrue(IntArrayUtils.compareExcludOrder(null, null));
         assertFalse(IntArrayUtils.compareExcludOrder(null, arr3));
     }
 
     @Test(timeout = 1000)
-    public void equallyArrCompareArrays() throws Exception {
+    public void equallyArrCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {5, 4, 2, 1, 3};
         assertTrue(IntArrayUtils.compareExcludOrder(arr1, arr2));
@@ -72,7 +72,7 @@ public class IntArrayUtilsTest {
     }
 
     @Test(timeout = 1000)
-    public void noEqualDimenCompareArrays() throws Exception {
+    public void noEqualDimenCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {5, 4, 2};
         assertFalse(IntArrayUtils.compareExcludOrder(arr1, arr2));
@@ -80,7 +80,7 @@ public class IntArrayUtilsTest {
     }
 
     @Test(timeout = 1000)
-    public void equalDimenNoEquallyArrCompareArrays() throws Exception {
+    public void equalDimenNoEquallyArrCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {5, 4, 2, 2, 2};
         assertFalse(IntArrayUtils.compareExcludOrder(arr1, arr2));
@@ -88,7 +88,7 @@ public class IntArrayUtilsTest {
     }
 
     @Test(timeout = 1000)
-    public void emptyCompareArrays() throws Exception {
+    public void emptyCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {};
         assertTrue(IntArrayUtils.compareExcludOrder(arr1, arr1));
@@ -96,21 +96,14 @@ public class IntArrayUtilsTest {
     }
 
     @Test
-    public void testShuffleArr() throws Exception {
+    public void testShuffle() throws Exception {
         int[] arr = {1, 2, 3, 4, 5, 6, 7};
-        int[] shuffleArr = IntArrayUtils.shuffleArr(arr);
+        int[] shuffleArr = IntArrayUtils.shuffle(arr);
         assertTrue(IntArrayUtils.compareExcludOrder(arr, shuffleArr));
-        int count = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != shuffleArr[i]) {
-                count++;
-            }
-        }
-        assertTrue(count > 0);
     }
 
     @Test
-    public void nullShuffleArr() throws Exception {
-        assertTrue(Arrays.equals(null, IntArrayUtils.shuffleArr(null)));
+    public void nullShuffle() throws Exception {
+        assertTrue(Arrays.equals(null, IntArrayUtils.shuffle(null)));
     }
 }

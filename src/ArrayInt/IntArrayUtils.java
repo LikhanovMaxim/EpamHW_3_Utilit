@@ -31,20 +31,20 @@ public final class IntArrayUtils {
         return arr;
     }
 
-    public static boolean compareExcludOrder(int[] firstArr, int[] secondArr) {
-        if (firstArr == null && secondArr == null) {
+    public static boolean compareExcludOrder(int[] first, int[] second) {
+        if (first == null && second == null) {
             return true;
         }
-        if (firstArr == null || secondArr == null || firstArr.length != secondArr.length) {
+        if (first == null || second == null || first.length != second.length) {
             return false;
         }
-        int[] firArr = Arrays.copyOf(firstArr, firstArr.length);
-        int[] secArr = Arrays.copyOf(secondArr, secondArr.length);
-        Arrays.sort(firArr);
-        Arrays.sort(secArr);
+        int[] firstCopy = Arrays.copyOf(first, first.length);
+        int[] secondCopy = Arrays.copyOf(second, second.length);
+        Arrays.sort(firstCopy);
+        Arrays.sort(secondCopy);
         boolean flag = true;
-        for (int i = 0; i < firArr.length; i++) {
-            if (firArr[i] != secArr[i]) {
+        for (int i = 0; i < firstCopy.length; i++) {
+            if (firstCopy[i] != secondCopy[i]) {
                 flag = false;
                 break;
             }
@@ -52,7 +52,7 @@ public final class IntArrayUtils {
         return flag;
     }
 
-    public static int[] shuffleArr(int[] arr) {
+    public static int[] shuffle(int[] arr) {
         if (arr == null) {
             return null;
         }
