@@ -17,13 +17,6 @@ public class IntArrayUtilsTest {
     }
 
     @Test
-    public void NoEqualDimenAndSizeChangeSize() throws Exception {
-        int[] arr = {1, 2, 3, 4, 5};
-        int[] result = {1, 2, 3};
-        assertTrue(Arrays.equals(result, IntArrayUtils.changeSize(arr, 3)));
-    }
-
-    @Test
     public void SizeZeroChangeSize() throws Exception {
         int[] arr = {1, 2, 3};
         int[] result = {};
@@ -48,6 +41,13 @@ public class IntArrayUtilsTest {
         int[] arr = {1, 2, 3, 4, 5};
         int[] result = {1, 2, 3, 4, 5, 0, 0};
         assertTrue(Arrays.equals(result, IntArrayUtils.changeSize(arr, 7)));
+    }
+
+    @Test
+    public void SizeLessDimenChangeSize() throws Exception {
+        int[] arr = {1, 2, 3, 4, 5};
+        int[] result = {1, 2, 3};
+        assertTrue(Arrays.equals(result, IntArrayUtils.changeSize(arr, 3)));
     }
 
     @Test
