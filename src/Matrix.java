@@ -49,12 +49,13 @@ public class Matrix {
     Matrix(double[][] mat, int rows, int column) {
         this.rows = rows;
         this.column = column;
-        matrix = new double[rows][column];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                matrix[i][j] = mat[i][j];
-            }
-        }
+        matrix=mat.clone();
+//        matrix = new double[rows][column];
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < column; j++) {
+//                matrix[i][j] = mat[i][j];
+//            }
+//        }
     }
 
 
