@@ -13,13 +13,11 @@ public final class IntArrayUtils {
         if (size < 0) {
             return null;
         }
-        int[] changeArr = {};
+        int[] changeArr = new int[size];;
         if (arr == null) {
-            changeArr = new int[size];
             return changeArr;
         }
         if (size > arr.length) {
-            changeArr = new int[size];
             for (int i = 0; i < arr.length; i++) {
                 changeArr[i] = arr[i];
             }
