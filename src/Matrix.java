@@ -3,32 +3,6 @@ public class Matrix {
     private int rows;
     private int column;
 
-//    static void printMatrix(double[][] Matrix) {
-//        if (Matrix == null) {
-//            System.out.println("Matrix = null");
-//            return;
-//        }
-//        for (int rows = 0; rows < Matrix.length; rows++) {
-//            for (int columns = 0; columns < Matrix[0].length; columns++) {
-//                System.out.print(Matrix[rows][columns] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
-//
-    public void print() {
-        if (matrix == null) {
-            System.out.println("Matrix = null");
-            return;
-        }
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
     Matrix(int rows, int column) {
         if (rows < 0 || column < 0) {
             this.rows = 0;
@@ -278,14 +252,6 @@ public class Matrix {
         Matrix cloneMat=new Matrix(this.matrix, this.getRows(), this.column);
         return cloneMat;
     }
-    //    public double[][] transfMatToDoubl() {
-//        double[][] transfDoubl = new double[rows][column];
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < column; j++) {
-//                transfDoubl[i][j] = matrix[i][j];
-//            }
-//        }
-//        return transfDoubl;
-//    }
+
 }
 
