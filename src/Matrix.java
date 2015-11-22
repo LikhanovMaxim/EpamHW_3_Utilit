@@ -4,10 +4,10 @@ public class Matrix {
     private int column;
 
     public Matrix(int rows, int column) {
-        if (rows < 0 || column < 0) {
-            this.rows = 0;
-            this.column = 0;
-            matrix = null;
+        if (rows < 0 || column < 0) { //!!!
+            this.rows = 1;
+            this.column = 1;
+            matrix = new double[1][1];
             return;
         }
         this.rows = rows;
@@ -16,7 +16,7 @@ public class Matrix {
     }
 
     public Matrix(double[][] mat) {
-        if (mat == null) {
+        if (mat == null) { //!!!!
             matrix = new double[0][0];
             this.rows = 0;
             this.column = 0;
@@ -34,49 +34,20 @@ public class Matrix {
     }
 
 
-    public double getElem(int i, int j) {
-        if (i >= 0 && i < rows && j >= 0 && j < column) {
-            return matrix[i][j];
+    public double getElement(int rows, int column) {
+        if (rows >= 0 && rows < this.rows && column >= 0 && column < this.column) {
+            return matrix[rows][column];
         } else {
             return 0;
         }
     }
 
-    public int getRows() {
+    public int getRow() {
         return rows;
     }
 
     public int getColumn() {
         return column;
-    }
-
-    public boolean equals(double[][] compareMatrix) {
-        if (matrix == null && compareMatrix == null) {
-            return true;
-        }
-        if (matrix == null || compareMatrix == null) {
-            return false;
-        }
-        if (matrix.length != compareMatrix.length) {
-            return false;
-        }
-        if (matrix == null || compareMatrix == null) {
-            return false;
-        }
-        boolean flag = true;
-        for (int i = 0; i < matrix.length && flag; i++) {
-            if (matrix[i].length != compareMatrix[i].length) {
-                flag = false;
-                break;
-            }
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] != compareMatrix[i][j]) {
-                    flag = false;
-                    break;
-                }
-            }
-        }
-        return flag;
     }
 
     public boolean equals(Matrix compareMatrix) {
@@ -89,7 +60,7 @@ public class Matrix {
         if (matrix == null || compareMatrix.matrix == null) {
             return false;
         }
-        if (matrix.length != compareMatrix.getRows()) {
+        if (matrix.length != compareMatrix.getRow()) {
             return false;
         }
         if (matrix == null || compareMatrix == null) {
@@ -102,7 +73,7 @@ public class Matrix {
                 break;
             }
             for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] != compareMatrix.getElem(i, j)) {
+                if (matrix[i][j] != compareMatrix.getElement(i, j)) {
                     flag = false;
                     break;
                 }
@@ -143,7 +114,7 @@ public class Matrix {
         if (matrix == null || cofactor.matrix == null) {
             return null;
         }
-        if (column != cofactor.getRows()) {
+        if (column != cofactor.getRow()) {
             return null;
         }
         double[][] mulMatrix = new double[column][cofactor.getColumn()];
@@ -164,14 +135,14 @@ public class Matrix {
         if (matrix == null || addend.matrix == null) {
             return null;
         }
-        if (rows != addend.getRows() || column != addend.getColumn()) {
+        if (rows != addend.getRow() || column != addend.getColumn()) {
             return null;
         }
         double[][] addMatrix;
         addMatrix = new double[rows][column];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < column; j++) {
-                addMatrix[i][j] = matrix[i][j] + addend.getElem(i, j);
+                addMatrix[i][j] = matrix[i][j] + addend.getElement(i, j);
             }
         }
         Matrix res = new Matrix(addMatrix);
@@ -185,14 +156,14 @@ public class Matrix {
         if (matrix == null || subtrahend.matrix == null) {
             return null;
         }
-        if (rows != subtrahend.getRows() || column != subtrahend.getColumn()) {
+        if (rows != subtrahend.getRow() || column != subtrahend.getColumn()) {
             return null;
         }
         double[][] subMatrix;
         subMatrix = new double[rows][column];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < column; j++) {
-                subMatrix[i][j] = matrix[i][j] - subtrahend.getElem(i, j);
+                subMatrix[i][j] = matrix[i][j] - subtrahend.getElement(i, j);
             }
         }
         Matrix res = new Matrix(subMatrix);
@@ -243,8 +214,8 @@ public class Matrix {
         }
         double det = 1;
         Matrix triangMat = this.transfTriangMat();
-        for (int i = 0; i < triangMat.getRows(); i++) {
-            det *= triangMat.getElem(i, i);
+        for (int i = 0; i < triangMat.getRow(); i++) {
+            det *= triangMat.getElement(i, i);
         }
         return det;
     }
