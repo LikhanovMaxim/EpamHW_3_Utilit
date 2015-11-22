@@ -31,7 +31,7 @@ public class MatrixTest {
     public void getElem() throws Exception {
         double[][] matrix = {{1, 2},
                 {3, 4}};
-        Matrix mat = new Matrix(matrix, matrix.length, matrix[0].length);
+        Matrix mat = new Matrix(matrix);
         assertTrue(mat.getElem(1, 1) == 4);
     }
 
@@ -39,7 +39,7 @@ public class MatrixTest {
     public void nullGetElem() throws Exception {
         double[][] matrix = {{1, 2},
                 {3, 4}};
-        Matrix mat = new Matrix(matrix, matrix.length, matrix[0].length);
+        Matrix mat = new Matrix(matrix);
         assertTrue(mat.getElem(17, 3) == 0);
     }
 
@@ -47,13 +47,13 @@ public class MatrixTest {
     public void getRows() throws Exception {
         double[][] matrix = {{1, 2, 3},
                 {4, 5, 6}};
-        Matrix mat = new Matrix(matrix, matrix.length, matrix[0].length);
+        Matrix mat = new Matrix(matrix);
         assertTrue(mat.getRows() == 2);
     }
 
     @Test
     public void nullGetRows() throws Exception {
-        Matrix mat = new Matrix(null, 0, 0);
+        Matrix mat = new Matrix(null);
         assertTrue(mat.getRows() == 0);
     }
 
@@ -67,13 +67,13 @@ public class MatrixTest {
     public void getColumn() throws Exception {
         double[][] matrix = {{1, 2, 3},
                 {4, 5, 6}};
-        Matrix mat = new Matrix(matrix, matrix.length, matrix[0].length);
+        Matrix mat = new Matrix(matrix);
         assertTrue(mat.getColumn() == 3);
     }
 
     @Test
     public void nullGetColumn() throws Exception {
-        Matrix mat = new Matrix(null, 0, 0);
+        Matrix mat = new Matrix(null);
         assertTrue(mat.getColumn() == 0);
     }
 
@@ -84,10 +84,10 @@ public class MatrixTest {
     }
 
     @Test
-    public void paramDoublNullEquallyMatix() throws Exception {
+    public void paramDoublNullEquals() throws Exception {
         Matrix mat = new Matrix(-1, 0);
-        double[][] matrNull = null;
-        assertTrue(mat.equals(matrNull));
+        double[][] matNull = null;
+        assertTrue(mat.equals(matNull));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class MatrixTest {
         double[][] matA = {{5, 8, -4},
                 {6, 9, -5},
                 {4, 7, -3}};
-        Matrix matC = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matC = new Matrix(matA);
         assertTrue(matC.equals(matA));
     }
 
@@ -112,8 +112,8 @@ public class MatrixTest {
                 {5, 4}};
         double[][] matB = {{3},
                 {-1}};
-        Matrix matC = new Matrix(matA, matA.length, matA[0].length);
-        Matrix matD = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matC = new Matrix(matA);
+        Matrix matD = new Matrix(matB);
         assertFalse(matC.equals(matB));
         assertFalse(matD.equals(matA));
     }
@@ -126,18 +126,26 @@ public class MatrixTest {
         double[][] matB = {{3, 2, 5},
                 {4, -1, 3},
                 {9, 6, 5}};
-        Matrix matC = new Matrix(matA, matA.length, matA[0].length);
-        Matrix matD = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matC = new Matrix(matA);
+        Matrix matD = new Matrix(matB);
         assertFalse(matC.equals(matB));
         assertFalse(matD.equals(matA));
     }
 
     @Test
-    public void paramMatEmptyEquallyMatix() throws Exception {
+    public void paramMatEmptyEquals() throws Exception {
         Matrix mat = new Matrix(0, 0);
-        double[][] matrEmpty = {};
-        Matrix matEmpty = new Matrix(matrEmpty, 0, 0);
-        assertTrue(mat.equals(matEmpty));
+        double[][] matEmpty = {};
+        for (int rows = 0; rows < matEmpty.length; rows++) {
+            for (int columns = 0; columns < matEmpty[0].length; columns++) {
+                System.out.print(matEmpty[rows][columns] + " ");
+            }
+            System.out.println();
+        }
+//        Matrix matEmpty = new Matrix(matEmpty);
+        System.out.println(mat.toString());
+//        System.out.println(matEmpty.toString());
+        //assertTrue(mat.equals(matEmpty));
     }
 
     @Test
@@ -145,7 +153,7 @@ public class MatrixTest {
         double[][] matA = {{5, 8, -4},
                 {6, 9, -5},
                 {4, 7, -3}};
-        Matrix result = new Matrix(matA, matA.length, matA[0].length);
+        Matrix result = new Matrix(matA);
         assertTrue(result.equals(result));
     }
 
@@ -155,8 +163,8 @@ public class MatrixTest {
                 {5, 4}};
         double[][] matB = {{3},
                 {-1}};
-        Matrix matC = new Matrix(matA, matA.length, matA[0].length);
-        Matrix matD = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matC = new Matrix(matA);
+        Matrix matD = new Matrix(matB);
         assertFalse(matC.equals(matD));
         assertFalse(matD.equals(matC));
     }
@@ -169,8 +177,8 @@ public class MatrixTest {
         double[][] matB = {{3, 2, 5},
                 {4, -1, 3},
                 {9, 6, 5}};
-        Matrix matC = new Matrix(matA, matA.length, matA[0].length);
-        Matrix matD = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matC = new Matrix(matA);
+        Matrix matD = new Matrix(matB);
         assertFalse(matC.equals(matD));
         assertFalse(matD.equals(matC));
     }
@@ -179,7 +187,7 @@ public class MatrixTest {
     public void setElem() throws Exception {
         double[][] mat = {{1, 2, 3},
                 {4, 5, 6}};
-        Matrix matr = new Matrix(mat, mat.length, mat[0].length);
+        Matrix matr = new Matrix(mat);
         double[][] result = {{1, 2, 3},
                 {17, 5, 6}};
         matr.setElem(1, 0, 17);
@@ -190,7 +198,7 @@ public class MatrixTest {
     public void firstGetColumn() throws Exception {
         double[][] mat = {{1, 2, 3},
                 {4, 5, 6}};
-        Matrix matr = new Matrix(mat, mat.length, mat[0].length);
+        Matrix matr = new Matrix(mat);
         double[] result = {1, 4};
         assertTrue(Arrays.equals(result, matr.getColumn(mat, 0)));
     }
@@ -199,7 +207,7 @@ public class MatrixTest {
     public void midlGetColumn() throws Exception {
         double[][] mat = {{1, 2, 3},
                 {4, 5, 6}};
-        Matrix matr = new Matrix(mat, mat.length, mat[0].length);
+        Matrix matr = new Matrix(mat);
         double[] result = {2, 5};
         assertTrue(Arrays.equals(result, matr.getColumn(mat, 1)));
     }
@@ -208,7 +216,7 @@ public class MatrixTest {
     public void lastGetColumn() throws Exception {
         double[][] mat = {{1, 2, 3},
                 {4, 5, 6}};
-        Matrix matr = new Matrix(mat, mat.length, mat[0].length);
+        Matrix matr = new Matrix(mat);
         double[] result = {3, 6};
         assertTrue(Arrays.equals(result, matr.getColumn(mat, 2)));
     }
@@ -217,15 +225,15 @@ public class MatrixTest {
     public void differDimenMultipl() throws Exception {
         double[][] matA = {{-2, 1},
                 {5, 4}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] matB = {{3},
                 {-1}};
-        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matrixB = new Matrix(matB);
         double[][] result = {{-7},
                 {11}};
-        Matrix matrixResult = new Matrix(result, result.length, result[0].length);
+        Matrix matrixResult = new Matrix(result);
         assertTrue(matrixResult.equals(matrixA.multipl(matrixB)));
-        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA = new Matrix(matA);
         assertFalse(matrixResult.equals(matrixB.multipl(matrixA)));
     }
 
@@ -233,15 +241,15 @@ public class MatrixTest {
     public void sameDimenMultipl() throws Exception {
         double[][] matA = {{2, -3},
                 {4, -6}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] matB = {{9, -6},
                 {6, -4}};
-        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matrixB = new Matrix(matB);
         double[][] result = {{0, 0},
                 {0, 0}};
-        Matrix matrixResult = new Matrix(result, result.length, result[0].length);
+        Matrix matrixResult = new Matrix(result);
         assertTrue(matrixResult.equals(matrixA.multipl(matrixB)));
-        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA = new Matrix(matA);
         assertFalse(matrixResult.equals(matrixB.multipl(matrixA)));
     }
 
@@ -249,12 +257,12 @@ public class MatrixTest {
     public void differDimenSub() throws Exception {
         double[][] matA = {{-2, 1},
                 {5, 4}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] matB = {{3},
                 {-1}};
-        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matrixB = new Matrix(matB);
         assertTrue(matrixA.sub(matrixB) == null);
-        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA = new Matrix(matA);
         assertTrue(matrixB.sub(matrixA) == null);
     }
 
@@ -262,15 +270,15 @@ public class MatrixTest {
     public void sameDimenSub() throws Exception {
         double[][] matA = {{12, -3},
                 {4, 16}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] matB = {{9, -6},
                 {6, -4}};
-        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matrixB = new Matrix(matB);
         double[][] result = {{3, 3},
                 {-2, 20}};
-        Matrix matrixResult = new Matrix(result, result.length, result[0].length);
+        Matrix matrixResult = new Matrix(result);
         assertTrue(matrixResult.equals(matrixA.sub(matrixB)));
-        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA = new Matrix(matA);
         assertFalse(matrixResult.equals(matrixB.sub(matrixA)));
     }
 
@@ -278,12 +286,12 @@ public class MatrixTest {
     public void differDimenAdd() throws Exception {
         double[][] matA = {{-2, 1},
                 {5, 4}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] matB = {{3},
                 {-1}};
-        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matrixB = new Matrix(matB);
         assertTrue(matrixA.add(matrixB) == null);
-        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA = new Matrix(matA);
         assertTrue(matrixB.add(matrixA) == null);
     }
 
@@ -291,15 +299,15 @@ public class MatrixTest {
     public void sameDimenAdd() throws Exception {
         double[][] matA = {{2, -3},
                 {4, -6}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] matB = {{9, -6},
                 {6, -4}};
-        Matrix matrixB = new Matrix(matB, matB.length, matB[0].length);
+        Matrix matrixB = new Matrix(matB);
         double[][] result = {{11, -9},
                 {10, -10}};
-        Matrix matrixResult = new Matrix(result, result.length, result[0].length);
+        Matrix matrixResult = new Matrix(result);
         assertTrue(matrixResult.equals(matrixA.add(matrixB)));
-        matrixA = new Matrix(matA, matA.length, matA[0].length);
+        matrixA = new Matrix(matA);
         assertTrue(matrixResult.equals(matrixB.add(matrixA)));
     }
 
@@ -308,7 +316,7 @@ public class MatrixTest {
         double[][] matA = {{5, 3},
                 {4, 5},
                 {1, 1}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         matrixA.transfTriangMat();
         assertTrue(matrixA.equals(matrixA));
     }
@@ -317,10 +325,10 @@ public class MatrixTest {
     public void squareTransfTriangMat() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] res = {{5, 3},
                 {0, 2.5999999999999996}};
-        Matrix result = new Matrix(res, res.length, res[0].length);
+        Matrix result = new Matrix(res);
         matrixA.transfTriangMat();
         assertTrue(result.equals(matrixA));
     }
@@ -330,11 +338,11 @@ public class MatrixTest {
         double[][] matA = {{1, 2, 3},
                 {1, 1, 2},
                 {3, 1, 1}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double[][] res = {{1, 2, 3},
                 {0, -1, -1},
                 {0, 0, -3}};
-        Matrix result = new Matrix(res, res.length, res[0].length);
+        Matrix result = new Matrix(res);
         matrixA.transfTriangMat();
         assertTrue(result.equals(matrixA));
 
@@ -345,7 +353,7 @@ public class MatrixTest {
         double[][] matA = {{5, 3},
                 {4, 5},
                 {1, 1}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double result = 0;
         assertTrue(result == matrixA.determin());
 
@@ -355,7 +363,7 @@ public class MatrixTest {
     public void squarDetermin() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double result = 13;
         assertTrue(result == (int) matrixA.determin() + 1);
     }
@@ -365,20 +373,20 @@ public class MatrixTest {
         double[][] matA = {{1, 2, 3},
                 {1, 1, 2},
                 {3, 1, 1}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
+        Matrix matrixA = new Matrix(matA);
         double result = 3;
         assertTrue(result == matrixA.determin());
     }
 
-    @Test
-    public void testClone() throws CloneNotSupportedException {
-        double[][] matA = {{1, 2, 3},
-                {1, 1, 2},
-                {3, 1, 1}};
-        Matrix matrixA = new Matrix(matA, matA.length, matA[0].length);
-        Matrix result=(Matrix)matrixA.clone();
-        assertTrue(result.equals(matrixA));
-        result.setElem(1, 1, 17);
-        assertFalse(result.equals(matrixA));
-    }
+//    @Test
+//    public void testClone() throws CloneNotSupportedException {
+//        double[][] matA = {{1, 2, 3},
+//                {1, 1, 2},
+//                {3, 1, 1}};
+//        Matrix matrixA = new Matrix(matA);
+//        Matrix result = (Matrix) matrixA.clone();
+//        assertTrue(result.equals(matrixA));
+//        result.setElem(1, 1, 17);
+////        assertFalse(result.equals(matrixA));
+//    }
 }

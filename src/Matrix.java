@@ -3,7 +3,7 @@ public class Matrix {
     private int rows;
     private int column;
 
-    Matrix(int rows, int column) {
+    public Matrix(int rows, int column) {
         if (rows < 0 || column < 0) {
             this.rows = 0;
             this.column = 0;
@@ -13,23 +13,24 @@ public class Matrix {
         this.rows = rows;
         this.column = column;
         matrix = new double[rows][column];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                matrix[i][j] = 0;
-            }
-        }
     }
 
-    Matrix(double[][] mat, int rows, int column) {
-        this.rows = rows;
-        this.column = column;
-        matrix=mat.clone();
-//        matrix = new double[rows][column];
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < column; j++) {
-//                matrix[i][j] = mat[i][j];
-//            }
-//        }
+    public Matrix(double[][] mat) {
+        if (mat == null) {
+            matrix = new double[0][0];
+            this.rows = 0;
+            this.column = 0;
+            return;
+        }
+        this.rows = mat.length;
+        this.column = mat[0].length;
+//        matrix=mat.clone();
+        matrix = new double[rows][column];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < column; j++) {
+                matrix[i][j] = mat[i][j];
+            }
+        }
     }
 
 
@@ -152,7 +153,7 @@ public class Matrix {
                 mulMatrix[i][j] = sum;
             }
         }
-        Matrix res = new Matrix(mulMatrix, column, cofactor.getColumn());
+        Matrix res = new Matrix(mulMatrix);
         return res;
     }
 
@@ -173,7 +174,7 @@ public class Matrix {
                 addMatrix[i][j] = matrix[i][j] + addend.getElem(i, j);
             }
         }
-        Matrix res = new Matrix(addMatrix, rows, column);
+        Matrix res = new Matrix(addMatrix);
         return res;
     }
 
@@ -194,7 +195,7 @@ public class Matrix {
                 subMatrix[i][j] = matrix[i][j] - subtrahend.getElem(i, j);
             }
         }
-        Matrix res = new Matrix(subMatrix, rows, column);
+        Matrix res = new Matrix(subMatrix);
         return res;
     }
 
@@ -232,7 +233,7 @@ public class Matrix {
                 }
             }
         }
-        Matrix res = new Matrix(triangMat, rows, column);
+        Matrix res = new Matrix(triangMat);
         return res;
     }
 
@@ -247,11 +248,25 @@ public class Matrix {
         }
         return det;
     }
+
     @Override
-    public Matrix clone() throws CloneNotSupportedException {
-        Matrix cloneMat=new Matrix(this.matrix, this.getRows(), this.column);
-        return cloneMat;
+    public String toString() {
+        String result = "{";
+        for (int rows = 0; rows < matrix.length; rows++) {
+            for (int columns = 0; columns < matrix[0].length; columns++) {
+                result += matrix[rows][columns] + " ";
+            }
+            result += "}\n";
+        }
+        result += "}";
+        return result;
     }
+//    @Override
+//    public Matrix clone() throws CloneNotSupportedException {
+//
+//        Matrix cloneMat=new Matrix(this.matrix);
+//        return cloneMat;
+//    }
 
 }
 

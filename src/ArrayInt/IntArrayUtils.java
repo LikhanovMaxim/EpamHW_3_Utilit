@@ -13,7 +13,8 @@ public final class IntArrayUtils {
         if (size < 0) {
             return null;
         }
-        int[] changeArr = new int[size];;
+        int[] changeArr = new int[size];
+        ;
         if (arr == null) {
             return changeArr;
         }
