@@ -50,30 +50,31 @@ public class Matrix {
         return column;
     }
 
-    public boolean equals(Matrix compareMatrix) {
-        if (compareMatrix == null) {
+    public boolean equals(Object compareMatrix) {
+        Matrix compare = (Matrix)compareMatrix;
+        if (compare == null) {
             return false;
         }
-        if (matrix == null && compareMatrix.matrix == null) {
+        if (matrix == null && compare.matrix == null) {
             return true;
         }
-        if (matrix == null || compareMatrix.matrix == null) {
+        if (matrix == null || compare.matrix == null) {
             return false;
         }
-        if (matrix.length != compareMatrix.getRow()) {
+        if (matrix.length != compare.getRow()) {
             return false;
         }
-        if (matrix == null || compareMatrix == null) {
+        if (matrix == null || compare == null) {
             return false;
         }
         boolean flag = true;
         for (int i = 0; i < matrix.length && flag; i++) {
-            if (matrix[i].length != compareMatrix.matrix[i].length) {
+            if (matrix[i].length != compare.matrix[i].length) {
                 flag = false;
                 break;
             }
             for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] != compareMatrix.getElement(i, j)) {
+                if (matrix[i][j] != compare.getElement(i, j)) {
                     flag = false;
                     break;
                 }
