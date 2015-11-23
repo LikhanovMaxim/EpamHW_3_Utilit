@@ -83,10 +83,10 @@ public class Matrix {
         return true;
     }
 
-    public double[] getColumn(double[][] Matrix, int column) {
-        double[] columnToMas = new double[Matrix.length];
-        for (int i = 0; i < Matrix.length; i++) {
-            columnToMas[i] = Matrix[i][column];
+    public double[] getColumn(int column) {
+        double[] columnToMas = new double[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            columnToMas[i] = matrix[i][column];
         }
         return columnToMas;
     }
@@ -112,7 +112,7 @@ public class Matrix {
         double[][] mulMatrix = new double[column][cofactor.getColumn()];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cofactor.getColumn(); j++) {
-                double sum = mulRowColumn(this.matrix[i], getColumn(cofactor.matrix, j));
+                double sum = mulRowColumn(this.matrix[i], cofactor.getColumn(j));
                 mulMatrix[i][j] = sum;
             }
         }
