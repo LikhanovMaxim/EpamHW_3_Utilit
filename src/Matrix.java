@@ -91,10 +91,10 @@ public class Matrix {
         return columnToMas;
     }
 
-    public double mulRowColumn(double[] firstMas, double[] secondMas) {
+    public double mulRowColumn(double[] row, double[] column) {
         double sum = 0;
-        for (int i = 0; i < firstMas.length; i++) {
-            sum += firstMas[i] * secondMas[i];
+        for (int i = 0; i < row.length; i++) {
+            sum += row[i] * column[i];
         }
         return sum;
     }
