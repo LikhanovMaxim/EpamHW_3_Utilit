@@ -162,7 +162,7 @@ public class Matrix {
         return res;
     }
 
-    public void changeRows(double[][] Mat, int i, int line) {
+    private void changeRows(double[][] Mat, int i, int line) {
         double cur;
         for (int p = i + 1; p < line; p++) {
             if (Mat[p][i] != 0) {
@@ -216,7 +216,7 @@ public class Matrix {
     public String toString() {
         String result = "{";
         for (int rows = 0; rows < matrix.length; rows++) {
-            result+="{";
+            result += "{";
             for (int columns = 0; columns < matrix[0].length; columns++) {
                 result += matrix[rows][columns] + " ";
             }
@@ -225,12 +225,18 @@ public class Matrix {
         result += "}";
         return result;
     }
-//    @Override
-//    public Matrix clone() throws CloneNotSupportedException {
-//
-//        Matrix cloneMat=new Matrix(this.matrix);
-//        return cloneMat;
-//    }
+
+    @Override
+    public Matrix clone() throws CloneNotSupportedException {
+        Matrix cloneMat = new Matrix(this.getRow(), this.getColumn());
+//        cloneMat.matrix = this.matrix.clone();
+        for (int row = 0; row < this.getRow(); row++) {
+            for (int column = 0; column < this.getColumn(); column++) {
+                cloneMat.setElement(row, column, this.getElement(row, column));
+            }
+        }
+        return cloneMat;
+    }
 
 }
 

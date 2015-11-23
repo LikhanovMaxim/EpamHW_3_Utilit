@@ -329,15 +329,15 @@ public class MatrixTest {
         assertTrue(result == matrixA.determin());
     }
 
-//    @Test
-//    public void testClone() throws CloneNotSupportedException {
-//        double[][] matA = {{1, 2, 3},
-//                {1, 1, 2},
-//                {3, 1, 1}};
-//        Matrix matrixA = new Matrix(matA);
-//        Matrix result = (Matrix) matrixA.clone();
-//        assertTrue(result.equals(matrixA));
-//        result.setElement(1, 1, 17);
-////        assertFalse(result.equals(matrixA));
-//    }
+    @Test
+    public void testClone() throws CloneNotSupportedException {
+        double[][] matA = {{1, 2, 3},
+                {1, 1, 2},
+                {3, 1, 1}};
+        Matrix matrixA = new Matrix(matA);
+        Matrix result =  matrixA.clone();
+        assertTrue(result.equals(matrixA));
+        result.setElement(1, 1, 17);
+        assertFalse(result.equals(matrixA));
+    }
 }
