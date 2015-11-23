@@ -10,7 +10,7 @@ public class MatrixTest {
         Matrix mat = new Matrix(2, 2);
         double[][] result = {{0, 0},
                 {0, 0}};
-        Matrix resultMat=new Matrix(result);
+        Matrix resultMat = new Matrix(result);
         assertTrue(mat.equals(resultMat));
     }
 
@@ -46,6 +46,18 @@ public class MatrixTest {
                 {3, 4}};
         Matrix mat = new Matrix(matrix);
         assertTrue(mat.getElement(17, 3) == 0);
+    }
+
+    @Test
+    public void setElement() throws Exception {
+        double[][] mat = {{1, 2, 3},
+                {4, 5, 6}};
+        Matrix matrix = new Matrix(mat);
+        double[][] result = {{1, 2, 3},
+                {17, 5, 6}};
+        Matrix matResult = new Matrix(result);
+        matrix.setElement(1, 0, 17);
+        assertTrue(matrix.equals(matResult));
     }
 
     @Test
@@ -131,17 +143,6 @@ public class MatrixTest {
         assertFalse(secondSquareMat.equals(firstSquareMat));
     }
 
-    @Test
-    public void setElem() throws Exception {
-        double[][] mat = {{1, 2, 3},
-                {4, 5, 6}};
-        Matrix matrix = new Matrix(mat);
-        double[][] result = {{1, 2, 3},
-                {17, 5, 6}};
-        Matrix matResult=new Matrix(result);
-        matrix.setElem(1, 0, 17);
-        assertTrue(matrix.equals(matResult));
-    }
 
     @Test
     public void firstGetColumn() throws Exception {
@@ -335,7 +336,7 @@ public class MatrixTest {
 //        Matrix matrixA = new Matrix(matA);
 //        Matrix result = (Matrix) matrixA.clone();
 //        assertTrue(result.equals(matrixA));
-//        result.setElem(1, 1, 17);
+//        result.setElement(1, 1, 17);
 ////        assertFalse(result.equals(matrixA));
 //    }
 }
