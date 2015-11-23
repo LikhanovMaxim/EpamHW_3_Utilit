@@ -24,13 +24,7 @@ public class Matrix {
         }
         this.rows = mat.length;
         this.column = mat[0].length;
-//        matrix=mat.clone();
-        matrix = new double[rows][column];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                matrix[i][j] = mat[i][j];
-            }
-        }
+        matrix=mat.clone();
     }
 
 
