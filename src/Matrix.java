@@ -69,10 +69,6 @@ public class Matrix {
         }
         boolean flag = true;
         for (int i = 0; i < matrix.length && flag; i++) {
-            if (matrix[i].length != compare.matrix[i].length) {
-                flag = false;
-                break;
-            }
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] != compare.getElement(i, j)) {
                     flag = false;
