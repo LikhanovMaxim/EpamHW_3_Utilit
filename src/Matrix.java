@@ -42,6 +42,12 @@ public class Matrix {
         }
     }
 
+    public void setElement(int rows, int column, double element) {
+        if (rows >= 0 && rows < this.rows && column >= 0 && column < this.column) {
+            matrix[rows][column] = element;
+        }
+    }
+
     public int getRow() {
         return rows;
     }
@@ -51,7 +57,7 @@ public class Matrix {
     }
 
     public boolean equals(Object compareMatrix) {
-        Matrix compare = (Matrix)compareMatrix;
+        Matrix compare = (Matrix) compareMatrix;
         if (compare == null) {
             return false;
         }
@@ -75,15 +81,6 @@ public class Matrix {
             }
         }
         return true;
-    }
-
-    public boolean setElem(int rows, int column, double element) {
-        if (rows >= 0 && rows < this.rows && column >= 0 && column < this.column) {
-            matrix[rows][column] = element;
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public double[] getColumn(double[][] Matrix, int column) {
