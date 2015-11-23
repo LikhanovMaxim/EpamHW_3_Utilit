@@ -49,7 +49,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void setElement() throws Exception {
+    public void testSetElement() throws Exception {
         double[][] mat = {{1, 2, 3},
                 {4, 5, 6}};
         Matrix matrix = new Matrix(mat);
@@ -150,7 +150,7 @@ public class MatrixTest {
                 {4, 5, 6}};
         Matrix matr = new Matrix(mat);
         double[] result = {1, 4};
-        assertTrue(Arrays.equals(result, matr.getColumn(mat, 0)));
+        assertTrue(Arrays.equals(result, matr.getColumn(0)));
     }
 
     @Test
@@ -159,7 +159,7 @@ public class MatrixTest {
                 {4, 5, 6}};
         Matrix matrix = new Matrix(mat);
         double[] result = {2, 5};
-        assertTrue(Arrays.equals(result, matrix.getColumn(mat, 1)));
+        assertTrue(Arrays.equals(result, matrix.getColumn(1)));
     }
 
     @Test
@@ -168,7 +168,7 @@ public class MatrixTest {
                 {4, 5, 6}};
         Matrix matrix = new Matrix(mat);
         double[] result = {3, 6};
-        assertTrue(Arrays.equals(result, matrix.getColumn(mat, 2)));
+        assertTrue(Arrays.equals(result, matrix.getColumn(2)));
     }
 
     @Test(timeout = 1000)
@@ -198,6 +198,7 @@ public class MatrixTest {
         double[][] result = {{0, 0},
                 {0, 0}};
         Matrix matrixResult = new Matrix(result);
+//        System.out.println(matrixA.multipl(matrixB).toString());
         assertTrue(matrixResult.equals(matrixA.multipl(matrixB)));
         matrixA = new Matrix(matA);
         assertFalse(matrixResult.equals(matrixB.multipl(matrixA)));
