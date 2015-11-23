@@ -89,15 +89,9 @@ public class MatrixTest {
     }
 
 //    @Test
-//    public void paramMatEmptyEquals() throws Exception {
+//    public void emptyEquals() throws Exception {
 //        Matrix mat = new Matrix(0, 0);
 //        double[][] matEmpty = {};
-//        for (int rows = 0; rows < matEmpty.length; rows++) {
-//            for (int columns = 0; columns < matEmpty[0].length; columns++) {
-//                System.out.print(matEmpty[rows][columns] + " ");
-//            }
-//            System.out.println();
-//        }
 //        Matrix matrixEmpty = new Matrix(matEmpty);
 //        assertTrue(mat.equals(matrixEmpty));
 //    }
