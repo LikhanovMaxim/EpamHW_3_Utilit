@@ -176,7 +176,7 @@ public class Matrix {
         }
     }
 
-    public Matrix transfTriangMat() {
+    public Matrix toTriangularMatrix() {
         if (matrix == null || rows != column) {
             return null;
         }
@@ -205,7 +205,7 @@ public class Matrix {
             return 0;
         }
         double det = 1;
-        Matrix triangMat = this.transfTriangMat();
+        Matrix triangMat = this.toTriangularMatrix();
         for (int i = 0; i < triangMat.getRow(); i++) {
             det *= triangMat.getElement(i, i);
         }
@@ -216,6 +216,7 @@ public class Matrix {
     public String toString() {
         String result = "{";
         for (int rows = 0; rows < matrix.length; rows++) {
+            result+="{";
             for (int columns = 0; columns < matrix[0].length; columns++) {
                 result += matrix[rows][columns] + " ";
             }

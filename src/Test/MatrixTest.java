@@ -263,29 +263,29 @@ public class MatrixTest {
     }
 
     @Test
-    public void differTransfTriangMat() throws Exception {
+    public void differToTriangularMatrix() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5},
                 {1, 1}};
         Matrix matrixA = new Matrix(matA);
-        matrixA.transfTriangMat();
+        matrixA.toTriangularMatrix();
         assertTrue(matrixA.equals(matrixA));
     }
 
     @Test
-    public void squareTransfTriangMat() throws Exception {
+    public void squareToTriangularMatrix() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5}};
         Matrix matrixA = new Matrix(matA);
         double[][] res = {{5, 3},
                 {0, 2.5999999999999996}};
         Matrix result = new Matrix(res);
-        matrixA.transfTriangMat();
+        matrixA.toTriangularMatrix();
         assertTrue(result.equals(matrixA));
     }
 
     @Test
-    public void cubicTransfTriangMat() throws Exception {
+    public void cubicToTriangularMatrix() throws Exception {
         double[][] matA = {{1, 2, 3},
                 {1, 1, 2},
                 {3, 1, 1}};
@@ -294,7 +294,7 @@ public class MatrixTest {
                 {0, -1, -1},
                 {0, 0, -3}};
         Matrix result = new Matrix(res);
-        matrixA.transfTriangMat();
+        matrixA.toTriangularMatrix();
         assertTrue(result.equals(matrixA));
 
     }
