@@ -300,33 +300,33 @@ public class MatrixTest {
     }
 
     @Test
-    public void differDimenDetermin() throws Exception {
+    public void differCalcDeterminate() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5},
                 {1, 1}};
         Matrix matrixA = new Matrix(matA);
         double result = 0;
-        assertTrue(result == matrixA.determin());
+        assertTrue(result == matrixA.calcDeterminate());
 
     }
 
     @Test
-    public void squarDetermin() throws Exception {
+    public void squarCalcDeterminate() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5}};
         Matrix matrixA = new Matrix(matA);
         double result = 13;
-        assertTrue(result == (int) matrixA.determin() + 1);
+        assertTrue(result == (int) matrixA.calcDeterminate() + 1);
     }
 
     @Test
-    public void cubicDetermin() throws Exception {
+    public void cubicCalcDeterminate() throws Exception {
         double[][] matA = {{1, 2, 3},
                 {1, 1, 2},
                 {3, 1, 1}};
         Matrix matrixA = new Matrix(matA);
         double result = 3;
-        assertTrue(result == matrixA.determin());
+        assertTrue(result == matrixA.calcDeterminate());
     }
 
     @Test

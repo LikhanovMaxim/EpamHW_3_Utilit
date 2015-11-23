@@ -200,7 +200,7 @@ public class Matrix {
         return res;
     }
 
-    public double determin() {
+    public double calcDeterminate() {
         if (matrix == null || rows != column) {
             return 0;
         }
