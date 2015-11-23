@@ -14,7 +14,6 @@ public final class IntArrayUtils {
             return null;
         }
         int[] changeArr = new int[size];
-        ;
         if (arr == null) {
             return changeArr;
         }
