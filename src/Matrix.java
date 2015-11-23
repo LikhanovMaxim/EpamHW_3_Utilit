@@ -67,16 +67,14 @@ public class Matrix {
         if (matrix == null || compare == null) {
             return false;
         }
-        boolean flag = true;
         for (int i = 0; i < matrix.length && flag; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] != compare.getElement(i, j)) {
-                    flag = false;
-                    break;
+                    return false;
                 }
             }
         }
-        return flag;
+        return true;
     }
 
     public boolean setElem(int rows, int column, double element) {
