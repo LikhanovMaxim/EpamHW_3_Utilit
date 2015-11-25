@@ -71,4 +71,16 @@ public final class IntArrayUtils {
     public static int[] filter(int[] arr, PredicateIntArr predicate) {
         return predicate.getArr(arr);
     }
+
+    public static String toString(int[] arr) {
+        if (arr == null) {
+            return "null";
+        }
+        String result = "{";
+        for (int element : arr) {
+            result += element + " ";
+        }
+        result += "}";
+        return result;
+    }
 }
