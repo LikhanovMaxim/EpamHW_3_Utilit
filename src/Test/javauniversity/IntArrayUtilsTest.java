@@ -133,4 +133,25 @@ public class IntArrayUtilsTest {
         int[] result = {};
         assertTrue(Arrays.equals(result, arr));
     }
+
+    @Test
+    public void testToString() throws Exception {
+        int[] arr = {1, 2, 3, 4, 5};
+        String result = "{1 2 3 4 5 }";
+        assertTrue(result.equals(IntArrayUtils.toString(arr)));
+    }
+
+    @Test
+    public void nullToString() throws Exception {
+        int[] arr = null;
+        String result = "null";
+        assertTrue(result.equals(IntArrayUtils.toString(arr)));
+    }
+
+    @Test
+    public void emptyToString() throws Exception {
+        int[] arr = {};
+        String result = "{}";
+        assertTrue(result.equals(IntArrayUtils.toString(arr)));
+    }
 }
