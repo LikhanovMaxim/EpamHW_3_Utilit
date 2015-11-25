@@ -205,64 +205,6 @@ public class MatrixTest {
     }
 
     @Test
-    public void differDimenSub() throws Exception {
-        double[][] matA = {{-2, 1},
-                {5, 4}};
-        Matrix matrixA = new Matrix(matA);
-        double[][] matB = {{3},
-                {-1}};
-        Matrix matrixB = new Matrix(matB);
-        assertTrue(matrixA.sub(matrixB) == null);
-        matrixA = new Matrix(matA);
-        assertTrue(matrixB.sub(matrixA) == null);
-    }
-
-    @Test
-    public void sameDimenSub() throws Exception {
-        double[][] matA = {{12, -3},
-                {4, 16}};
-        Matrix matrixA = new Matrix(matA);
-        double[][] matB = {{9, -6},
-                {6, -4}};
-        Matrix matrixB = new Matrix(matB);
-        double[][] result = {{3, 3},
-                {-2, 20}};
-        Matrix matrixResult = new Matrix(result);
-        assertTrue(matrixResult.equals(matrixA.sub(matrixB)));
-        matrixA = new Matrix(matA);
-        assertFalse(matrixResult.equals(matrixB.sub(matrixA)));
-    }
-
-    @Test
-    public void differDimenAdd() throws Exception {
-        double[][] matA = {{-2, 1},
-                {5, 4}};
-        Matrix matrixA = new Matrix(matA);
-        double[][] matB = {{3},
-                {-1}};
-        Matrix matrixB = new Matrix(matB);
-        assertTrue(matrixA.add(matrixB) == null);
-        matrixA = new Matrix(matA);
-        assertTrue(matrixB.add(matrixA) == null);
-    }
-
-    @Test
-    public void sameDimenAdd() throws Exception {
-        double[][] matA = {{2, -3},
-                {4, -6}};
-        Matrix matrixA = new Matrix(matA);
-        double[][] matB = {{9, -6},
-                {6, -4}};
-        Matrix matrixB = new Matrix(matB);
-        double[][] result = {{11, -9},
-                {10, -10}};
-        Matrix matrixResult = new Matrix(result);
-        assertTrue(matrixResult.equals(matrixA.add(matrixB)));
-        matrixA = new Matrix(matA);
-        assertTrue(matrixResult.equals(matrixB.add(matrixA)));
-    }
-
-    @Test
     public void differDimenSubPerformOperation() throws Exception {
         Operation operation = new Operation.Sub();
         double[][] matA = {{-2, 1},

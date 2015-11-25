@@ -24,7 +24,7 @@ public class Matrix {
         }
         this.rows = mat.length;
         this.column = mat[0].length;
-        matrix=mat.clone();
+        matrix = mat.clone();
     }
 
 
@@ -132,48 +132,6 @@ public class Matrix {
             }
         }
         Matrix res = new Matrix(addMatrix);
-        return res;
-    }
-
-    public Matrix add(Matrix addend) {
-        if (addend == null) {
-            return null;
-        }
-        if (matrix == null || addend.matrix == null) {
-            return null;
-        }
-        if (rows != addend.getRow() || column != addend.getColumn()) {
-            return null;
-        }
-        double[][] addMatrix;
-        addMatrix = new double[rows][column];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                addMatrix[i][j] = matrix[i][j] + addend.getElement(i, j);
-            }
-        }
-        Matrix res = new Matrix(addMatrix);
-        return res;
-    }
-
-    public Matrix sub(Matrix subtrahend) {
-        if (subtrahend == null) {
-            return null;
-        }
-        if (matrix == null || subtrahend.matrix == null) {
-            return null;
-        }
-        if (rows != subtrahend.getRow() || column != subtrahend.getColumn()) {
-            return null;
-        }
-        double[][] subMatrix;
-        subMatrix = new double[rows][column];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < column; j++) {
-                subMatrix[i][j] = matrix[i][j] - subtrahend.getElement(i, j);
-            }
-        }
-        Matrix res = new Matrix(subMatrix);
         return res;
     }
 
