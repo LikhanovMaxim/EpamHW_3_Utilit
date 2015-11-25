@@ -9,8 +9,8 @@ public interface PredicateIntArr {
         @Override
         public int[] getArr(int[] arr) {
             if (arr == null) {
-                int[] res = {};
-                return res;
+                int[] result = {};
+                return result;
             }
             int[] evenArr = new int[arr.length];
             int size = 0;
@@ -22,4 +22,23 @@ public interface PredicateIntArr {
             return Arrays.copyOf(evenArr, size);
         }
     }
+
+    final class MoreHundred implements PredicateIntArr {
+        @Override
+        public int[] getArr(int[] arr) {
+            if (arr == null) {
+                int[] result = {};
+                return result;
+            }
+            int[] result = new int[arr.length];
+            int size = 0;
+            for (int element : arr) {
+                if (element > 100) {
+                    result[size++] = element;
+                }
+            }
+            return Arrays.copyOf(result, size);
+        }
+    }
+
 }
