@@ -108,13 +108,29 @@ public class IntArrayUtilsTest {
     }
 
     @Test
-    public void testfiltr() throws Exception {
-        int arr[] = {1, 2, 3, 5, 6, 7, 8, 9, 10};
-        PredicateIntArr predicateInt =new Even();
-        int[] res=IntArrayUtils.filtr(arr, predicateInt);
-        for(int element: res){
-            System.out.print(element + " ");
-        }
-        System.out.println();
+    public void evenFiltr() throws Exception {
+        PredicateIntArr predicateInt = new Even();
+        int[] arr = {-4, -3, -2, -1, 0, 5, 6, 7, 8};
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {-4, -2, 0, 6, 8};
+        assertTrue(Arrays.equals(result, arr));
+    }
+
+    @Test
+    public void evenEmptyFiltr() throws Exception {
+        PredicateIntArr predicateInt = new Even();
+        int[] arr = {};
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {};
+        assertTrue(Arrays.equals(result, arr));
+    }
+
+    @Test
+    public void evenNullFiltr() throws Exception {
+        PredicateIntArr predicateInt = new Even();
+        int[] arr = null;
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {};
+        assertTrue(Arrays.equals(result, arr));
     }
 }
