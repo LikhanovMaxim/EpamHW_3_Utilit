@@ -109,7 +109,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void evenFilter() throws Exception {
-        PredicateIntArr predicateInt = new Even();
+        PredicateIntArr predicateInt = new PredicateIntArr.Even();
         int[] arr = {-4, -3, -2, -1, 0, 5, 6, 7, 8};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {-4, -2, 0, 6, 8};
@@ -118,7 +118,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void evenEmptyFilter() throws Exception {
-        PredicateIntArr predicateInt = new Even();
+        PredicateIntArr predicateInt = new PredicateIntArr.Even();
         int[] arr = {};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
@@ -127,7 +127,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void evenNullFilter() throws Exception {
-        PredicateIntArr predicateInt = new Even();
+        PredicateIntArr predicateInt = new PredicateIntArr.Even();
         int[] arr = null;
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
