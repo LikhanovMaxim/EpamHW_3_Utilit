@@ -128,7 +128,7 @@ public class Matrix {
         addMatrix = new double[rows][column];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < column; j++) {
-                addMatrix[i][j] = operation.getResult(matrix[i][j], right.getElement(i, j));
+                addMatrix[i][j] = operation.calculation(matrix[i][j], right.getElement(i, j));
             }
         }
         Matrix res = new Matrix(addMatrix);
