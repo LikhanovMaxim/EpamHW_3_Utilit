@@ -41,4 +41,32 @@ public interface PredicateIntArr {
         }
     }
 
+    final class Prime implements PredicateIntArr {
+        private boolean checkPrime(int number) {
+            number = Math.abs(number);
+            for (int i = 2; i * i <= number; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        @Override
+        public int[] getArr(int[] arr) {
+            if (arr == null) {
+                int[] res = {};
+                return res;
+            }
+            int[] evenArr = new int[arr.length];
+            int size = 0;
+            for (int element : arr) {
+                if (checkPrime(element)) {
+                    evenArr[size++] = element;
+                }
+            }
+            return Arrays.copyOf(evenArr, size);
+        }
+    }
+
 }
