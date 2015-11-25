@@ -108,7 +108,7 @@ public class IntArrayUtilsTest {
     }
 
     @Test
-    public void evenFiltr() throws Exception {
+    public void evenFilter() throws Exception {
         PredicateIntArr predicateInt = new Even();
         int[] arr = {-4, -3, -2, -1, 0, 5, 6, 7, 8};
         arr = IntArrayUtils.filter(arr, predicateInt);
@@ -117,7 +117,7 @@ public class IntArrayUtilsTest {
     }
 
     @Test
-    public void evenEmptyFiltr() throws Exception {
+    public void evenEmptyFilter() throws Exception {
         PredicateIntArr predicateInt = new Even();
         int[] arr = {};
         arr = IntArrayUtils.filter(arr, predicateInt);
@@ -126,7 +126,7 @@ public class IntArrayUtilsTest {
     }
 
     @Test
-    public void evenNullFiltr() throws Exception {
+    public void evenNullFilter() throws Exception {
         PredicateIntArr predicateInt = new Even();
         int[] arr = null;
         arr = IntArrayUtils.filter(arr, predicateInt);
