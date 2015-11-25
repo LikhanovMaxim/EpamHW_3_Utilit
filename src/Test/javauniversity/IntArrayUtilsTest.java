@@ -1,4 +1,4 @@
-package ArrayInt;
+package IntArrayUtils;
 
 import org.junit.Test;
 
@@ -105,5 +105,16 @@ public class IntArrayUtilsTest {
     @Test
     public void nullShuffle() throws Exception {
         assertTrue(Arrays.equals(null, IntArrayUtils.shuffle(null)));
+    }
+
+    @Test
+    public void testfiltr() throws Exception {
+        int arr[] = {1, 2, 3, 5, 6, 7, 8, 9, 10};
+        PredicateIntArr predicateInt =new Even();
+        int[] res=IntArrayUtils.filtr(arr, predicateInt);
+        for(int element: res){
+            System.out.print(element + " ");
+        }
+        System.out.println();
     }
 }
