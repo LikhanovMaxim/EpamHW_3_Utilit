@@ -114,6 +114,27 @@ public class Matrix {
         return res;
     }
 
+    public Matrix performOperation(Matrix right, Operation operation) {
+        if (right == null) {
+            return null;
+        }
+        if (matrix == null || right.matrix == null) {
+            return null;
+        }
+        if (rows != right.getRow() || column != right.getColumn()) {
+            return null;
+        }
+        double[][] addMatrix;
+        addMatrix = new double[rows][column];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < column; j++) {
+                addMatrix[i][j] = operation.getResult(matrix[i][j], right.getElement(i, j));
+            }
+        }
+        Matrix res = new Matrix(addMatrix);
+        return res;
+    }
+
     public Matrix add(Matrix addend) {
         if (addend == null) {
             return null;
