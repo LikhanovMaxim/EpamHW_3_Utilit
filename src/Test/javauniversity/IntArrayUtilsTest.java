@@ -133,7 +133,32 @@ public class IntArrayUtilsTest {
         int[] result = {};
         assertTrue(Arrays.equals(result, arr));
     }
+    @Test
+    public void moreHundredFilter() throws Exception {
+        PredicateIntArr predicateInt = new PredicateIntArr.MoreHundred();
+        int[] arr = {-400, -300, -200, -100, 0, 500, 600, 700, 800};
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {500, 600, 700, 800};
+        assertTrue(Arrays.equals(result, arr));
+    }
 
+    @Test
+    public void moreHundredEmptyFilter() throws Exception {
+        PredicateIntArr predicateInt = new PredicateIntArr.MoreHundred();
+        int[] arr = {};
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {};
+        assertTrue(Arrays.equals(result, arr));
+    }
+
+    @Test
+    public void moreHundredNullFilter() throws Exception {
+        PredicateIntArr predicateInt = new PredicateIntArr.MoreHundred();
+        int[] arr = null;
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {};
+        assertTrue(Arrays.equals(result, arr));
+    }
     @Test
     public void testToString() throws Exception {
         int[] arr = {1, 2, 3, 4, 5};
