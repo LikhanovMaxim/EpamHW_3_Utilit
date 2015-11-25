@@ -133,6 +133,7 @@ public class IntArrayUtilsTest {
         int[] result = {};
         assertTrue(Arrays.equals(result, arr));
     }
+
     @Test
     public void moreHundredFilter() throws Exception {
         PredicateIntArr predicateInt = new PredicateIntArr.MoreHundred();
@@ -159,6 +160,35 @@ public class IntArrayUtilsTest {
         int[] result = {};
         assertTrue(Arrays.equals(result, arr));
     }
+
+    @Test
+    public void primeFilter() throws Exception {
+        PredicateIntArr predicateInt = new PredicateIntArr.Prime();
+        int[] arr = {-7, -6, -5, -4, -1, 0, 1, 2, 8, 117};
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        System.out.println(IntArrayUtils.toString(arr));
+        int[] result = {-7, -5, -1, 0, 1, 2};
+        assertTrue(Arrays.equals(result, arr));
+    }
+
+    @Test
+    public void primeEmptyFilter() throws Exception {
+        PredicateIntArr predicateInt = new PredicateIntArr.Prime();
+        int[] arr = {};
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {};
+        assertTrue(Arrays.equals(result, arr));
+    }
+
+    @Test
+    public void primeNullFilter() throws Exception {
+        PredicateIntArr predicateInt = new PredicateIntArr.Prime();
+        int[] arr = null;
+        arr = IntArrayUtils.filter(arr, predicateInt);
+        int[] result = {};
+        assertTrue(Arrays.equals(result, arr));
+    }
+
     @Test
     public void testToString() throws Exception {
         int[] arr = {1, 2, 3, 4, 5};
