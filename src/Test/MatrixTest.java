@@ -263,6 +263,68 @@ public class MatrixTest {
     }
 
     @Test
+    public void differDimenSubPerformOperation() throws Exception {
+        Operation operation = new Operation.Sub();
+        double[][] matA = {{-2, 1},
+                {5, 4}};
+        Matrix matrixA = new Matrix(matA);
+        double[][] matB = {{3},
+                {-1}};
+        Matrix matrixB = new Matrix(matB);
+        assertTrue(matrixA.performOperation(matrixB, operation) == null);
+        matrixA = new Matrix(matA);
+        assertTrue(matrixB.performOperation(matrixA, operation) == null);
+    }
+
+    @Test
+    public void sameDimenSubPerformOperation() throws Exception {
+        Operation operation = new Operation.Sub();
+        double[][] matA = {{12, -3},
+                {4, 16}};
+        Matrix matrixA = new Matrix(matA);
+        double[][] matB = {{9, -6},
+                {6, -4}};
+        Matrix matrixB = new Matrix(matB);
+        double[][] result = {{3, 3},
+                {-2, 20}};
+        Matrix matrixResult = new Matrix(result);
+        assertTrue(matrixResult.equals(matrixA.performOperation(matrixB, operation)));
+        matrixA = new Matrix(matA);
+        assertFalse(matrixResult.equals(matrixB.performOperation(matrixA, operation)));
+    }
+
+    @Test
+    public void differDimenAddPerformOperation() throws Exception {
+        Operation operation = new Operation.Add();
+        double[][] matA = {{-2, 1},
+                {5, 4}};
+        Matrix matrixA = new Matrix(matA);
+        double[][] matB = {{3},
+                {-1}};
+        Matrix matrixB = new Matrix(matB);
+        assertTrue(matrixA.performOperation(matrixB, operation) == null);
+        matrixA = new Matrix(matA);
+        assertTrue(matrixB.performOperation(matrixA, operation) == null);
+    }
+
+    @Test
+    public void sameDimenAddPerformOperation() throws Exception {
+        Operation operation = new Operation.Add();
+        double[][] matA = {{2, -3},
+                {4, -6}};
+        Matrix matrixA = new Matrix(matA);
+        double[][] matB = {{9, -6},
+                {6, -4}};
+        Matrix matrixB = new Matrix(matB);
+        double[][] result = {{11, -9},
+                {10, -10}};
+        Matrix matrixResult = new Matrix(result);
+        assertTrue(matrixResult.equals(matrixA.performOperation(matrixB, operation)));
+        matrixA = new Matrix(matA);
+        assertTrue(matrixResult.equals(matrixB.performOperation(matrixA, operation)));
+    }
+
+    @Test
     public void differToTriangularMatrix() throws Exception {
         double[][] matA = {{5, 3},
                 {4, 5},
@@ -335,7 +397,7 @@ public class MatrixTest {
                 {1, 1, 2},
                 {3, 1, 1}};
         Matrix matrixA = new Matrix(matA);
-        Matrix result =  matrixA.clone();
+        Matrix result = matrixA.clone();
         assertTrue(result.equals(matrixA));
         result.setElement(1, 1, 17);
         assertFalse(result.equals(matrixA));
