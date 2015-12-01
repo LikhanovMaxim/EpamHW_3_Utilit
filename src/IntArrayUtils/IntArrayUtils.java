@@ -10,13 +10,26 @@ public final class IntArrayUtils {
     }
 
     public static int[] changeSize(int[] arr, int size) {
+        try {
+            return tryChangeSize(arr, size);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+            int[] emptyArr = {};
+            return emptyArr;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return new int[size];
+        }
+    }
+
+    private static int[] tryChangeSize(int[] arr, int size) throws RuntimeException {
         if (size < 0) {
-            return null;
+            throw new ArrayIndexOutOfBoundsException("the size is less than zero");
+        }
+        if (arr == null) {
+            throw new NullPointerException("at the entrance gave an empty array");
         }
         int[] changeArr = new int[size];
-        if (arr == null) {
-            return changeArr;
-        }
         if (size > arr.length) {
             for (int i = 0; i < arr.length; i++) {
                 changeArr[i] = arr[i];
@@ -27,11 +40,10 @@ public final class IntArrayUtils {
             changeArr = Arrays.copyOf(arr, size);
             return changeArr;
         }
-        //size == arr.length
         return arr;
     }
 
-    public static boolean compareExcludOrder(int[] first, int[] second) {
+    public static boolean compareExcludeOrder(int[] first, int[] second) {
         if (first == null && second == null) {
             return true;
         }

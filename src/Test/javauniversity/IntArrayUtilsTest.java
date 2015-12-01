@@ -53,53 +53,54 @@ public class IntArrayUtilsTest {
     @Test
     public void sizeLessZeroChangeSize() throws Exception {
         int[] arr = {1, 2, 3, 4, 5};
-        assertTrue(Arrays.equals(null, IntArrayUtils.changeSize(arr, -3)));
+        int[] emptyArr={};
+        assertTrue(Arrays.equals(emptyArr, IntArrayUtils.changeSize(arr, -3)));
     }
 
     @Test(timeout = 1000)
     public void nullCompareExcludOrder() throws Exception {
         int[] arr3 = {1, 2, 3};
-        assertTrue(IntArrayUtils.compareExcludOrder(null, null));
-        assertFalse(IntArrayUtils.compareExcludOrder(null, arr3));
+        assertTrue(IntArrayUtils.compareExcludeOrder(null, null));
+        assertFalse(IntArrayUtils.compareExcludeOrder(null, arr3));
     }
 
     @Test(timeout = 1000)
     public void equallyArrCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {5, 4, 2, 1, 3};
-        assertTrue(IntArrayUtils.compareExcludOrder(arr1, arr2));
-        assertTrue(IntArrayUtils.compareExcludOrder(arr2, arr1));
+        assertTrue(IntArrayUtils.compareExcludeOrder(arr1, arr2));
+        assertTrue(IntArrayUtils.compareExcludeOrder(arr2, arr1));
     }
 
     @Test(timeout = 1000)
     public void noEqualDimenCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {5, 4, 2};
-        assertFalse(IntArrayUtils.compareExcludOrder(arr1, arr2));
-        assertFalse(IntArrayUtils.compareExcludOrder(arr2, arr1));
+        assertFalse(IntArrayUtils.compareExcludeOrder(arr1, arr2));
+        assertFalse(IntArrayUtils.compareExcludeOrder(arr2, arr1));
     }
 
     @Test(timeout = 1000)
     public void equalDimenNoEquallyArrCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {5, 4, 2, 2, 2};
-        assertFalse(IntArrayUtils.compareExcludOrder(arr1, arr2));
-        assertFalse(IntArrayUtils.compareExcludOrder(arr2, arr1));
+        assertFalse(IntArrayUtils.compareExcludeOrder(arr1, arr2));
+        assertFalse(IntArrayUtils.compareExcludeOrder(arr2, arr1));
     }
 
     @Test(timeout = 1000)
     public void emptyCompareExcludOrder() throws Exception {
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {};
-        assertTrue(IntArrayUtils.compareExcludOrder(arr1, arr1));
-        assertFalse(IntArrayUtils.compareExcludOrder(arr1, arr2));
+        assertTrue(IntArrayUtils.compareExcludeOrder(arr1, arr1));
+        assertFalse(IntArrayUtils.compareExcludeOrder(arr1, arr2));
     }
 
     @Test
     public void testShuffle() throws Exception {
         int[] arr = {1, 2, 3, 4, 5, 6, 7};
         int[] shuffleArr = IntArrayUtils.shuffle(arr);
-        assertTrue(IntArrayUtils.compareExcludOrder(arr, shuffleArr));
+        assertTrue(IntArrayUtils.compareExcludeOrder(arr, shuffleArr));
     }
 
     @Test
