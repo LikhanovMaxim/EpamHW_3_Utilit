@@ -53,7 +53,7 @@ public class IntArrayUtilsTest {
     @Test
     public void sizeLessZeroChangeSize() throws Exception {
         int[] arr = {1, 2, 3, 4, 5};
-        int[] emptyArr={};
+        int[] emptyArr = {};
         assertTrue(Arrays.equals(emptyArr, IntArrayUtils.changeSize(arr, -3)));
     }
 

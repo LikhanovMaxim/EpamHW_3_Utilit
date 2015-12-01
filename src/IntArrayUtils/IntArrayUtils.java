@@ -24,16 +24,14 @@ public final class IntArrayUtils {
 
     private static int[] tryChangeSize(int[] arr, int size) throws RuntimeException {
         if (size < 0) {
-            throw new ArrayIndexOutOfBoundsException("the size is less than zero");
+            throw new ArrayIndexOutOfBoundsException("The size is less than zero");
         }
         if (arr == null) {
-            throw new NullPointerException("at the entrance gave an empty array");
+            throw new NullPointerException("At the entrance gave an null array");
         }
         int[] changeArr = new int[size];
         if (size > arr.length) {
-            for (int i = 0; i < arr.length; i++) {
-                changeArr[i] = arr[i];
-            }
+            System.arraycopy(arr, 0, changeArr, 0, arr.length);
             return changeArr;
         }
         if (size < arr.length) {
@@ -44,24 +42,37 @@ public final class IntArrayUtils {
     }
 
     public static boolean compareExcludeOrder(int[] first, int[] second) {
-        if (first == null && second == null) {
-            return true;
-        }
-        if (first == null || second == null || first.length != second.length) {
+        try {
+            return tryCompareExcludeOrder(first, second);
+        } catch (NullPointerException e) {
+            if (first == null && second == null) {
+                return true;
+            }
+            e.printStackTrace();
             return false;
+        } catch (ArraysSizeDifferentException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private static boolean tryCompareExcludeOrder(int[] first, int[] second) throws RuntimeException {
+        if (first == null || second == null) {
+            throw new NullPointerException("At the entrance gave an null array");
+        }
+        if (first.length != second.length) {
+            throw new ArraysSizeDifferentException("Different sizes of arrays");
         }
         int[] firstCopy = Arrays.copyOf(first, first.length);
         int[] secondCopy = Arrays.copyOf(second, second.length);
         Arrays.sort(firstCopy);
         Arrays.sort(secondCopy);
-        boolean flag = true;
         for (int i = 0; i < firstCopy.length; i++) {
             if (firstCopy[i] != secondCopy[i]) {
-                flag = false;
-                break;
+                return false;
             }
         }
-        return flag;
+        return true;
     }
 
     public static int[] shuffle(int[] arr) {
