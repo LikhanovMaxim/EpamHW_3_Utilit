@@ -80,12 +80,12 @@ public final class IntArrayUtils {
             return tryShuffle(arr);
         } catch (NullPointerException e) {
             e.printStackTrace();
-            int[] emptyArr={};
+            int[] emptyArr = {};
             return emptyArr;
         }
     }
 
-    private static int[] tryShuffle(int[] arr) throws RuntimeException  {
+    private static int[] tryShuffle(int[] arr) throws RuntimeException {
         if (arr == null) {
             throw new NullPointerException("At the entrance gave an null array");
         }
@@ -102,6 +102,19 @@ public final class IntArrayUtils {
     }
 
     public static int[] filter(int[] arr, PredicateIntArr predicate) {
+        try {
+            return tryFilter(arr, predicate);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            int[] tryArr = {};
+            return tryArr;
+        }
+    }
+
+    private static int[] tryFilter(int[] arr, PredicateIntArr predicate) {
+        if (arr == null) {
+            throw new NullPointerException("At the entrance gave an null array");
+        }
         return predicate.getArr(arr);
     }
 
