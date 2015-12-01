@@ -105,7 +105,8 @@ public class IntArrayUtilsTest {
 
     @Test
     public void nullShuffle() throws Exception {
-        assertTrue(Arrays.equals(null, IntArrayUtils.shuffle(null)));
+        int[] result={};
+        assertTrue(Arrays.equals(result, IntArrayUtils.shuffle(null)));
     }
 
     @Test

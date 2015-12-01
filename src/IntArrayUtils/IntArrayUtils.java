@@ -76,8 +76,18 @@ public final class IntArrayUtils {
     }
 
     public static int[] shuffle(int[] arr) {
+        try {
+            return tryShuffle(arr);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            int[] emptyArr={};
+            return emptyArr;
+        }
+    }
+
+    private static int[] tryShuffle(int[] arr) throws RuntimeException  {
         if (arr == null) {
-            return null;
+            throw new NullPointerException("At the entrance gave an null array");
         }
         int[] randArr = Arrays.copyOf(arr, arr.length);
         int index, cur;
