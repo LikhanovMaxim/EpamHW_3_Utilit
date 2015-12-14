@@ -102,20 +102,20 @@ public final class IntArrayUtils {
     }
 
     public static int[] filter(int[] arr, PredicateIntArr predicate) {
-        try {
-            return tryFilter(arr, predicate);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        if (arr == null) {
             int[] tryArr = {};
             return tryArr;
         }
-    }
-
-    private static int[] tryFilter(int[] arr, PredicateIntArr predicate) {
-        if (arr == null) {
-            throw new NullPointerException("At the entrance gave an null array");
+        int[] filter = new int[arr.length];
+        int size = 0;
+        for (int element : arr) {
+            if (predicate.apply(element)) {
+                filter[size] = element;
+                size++;
+            }
         }
-        return predicate.getArr(arr);
+        filter = Arrays.copyOf(filter, size);
+        return filter;
     }
 
     public static String toString(int[] arr) {
