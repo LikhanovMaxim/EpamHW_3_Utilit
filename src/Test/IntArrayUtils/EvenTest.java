@@ -9,14 +9,14 @@ public class EvenTest {
 
     @Test
     public void zeroApply() throws Exception {
-        PredicateIntArr predicate = new Even();
+        PredicateInt predicate = new Even();
         int zero = 0;
         assertTrue(predicate.apply(zero));
     }
 
     @Test
     public void evenApply() throws Exception {
-        PredicateIntArr predicate = new Even();
+        PredicateInt predicate = new Even();
         int even = 2;
         int negativeEven = -24;
         assertTrue(predicate.apply(even));
@@ -25,7 +25,7 @@ public class EvenTest {
 
     @Test
     public void noEvenApply() throws Exception {
-        PredicateIntArr predicate = new Even();
+        PredicateInt predicate = new Even();
         int noEven = 13;
         int negativeNoEven = -1;
         assertFalse(predicate.apply(noEven));

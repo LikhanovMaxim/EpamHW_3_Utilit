@@ -1,5 +1,5 @@
 package IntArrayUtils;
 
-public interface PredicateIntArr {
+public interface PredicateInt {
     boolean apply(int value);
 }

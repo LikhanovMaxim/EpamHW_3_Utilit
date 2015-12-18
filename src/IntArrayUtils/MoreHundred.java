@@ -1,6 +1,6 @@
 package IntArrayUtils;
 
-final class MoreHundred implements PredicateIntArr {
+final class MoreHundred implements PredicateInt {
 
     @Override
     public boolean apply(int value) {

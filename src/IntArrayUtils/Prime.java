@@ -1,6 +1,6 @@
 package IntArrayUtils;
 
-final class Prime implements PredicateIntArr {
+final class Prime implements PredicateInt {
 
     @Override
     public boolean apply(int value) {

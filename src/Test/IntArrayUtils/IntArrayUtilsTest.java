@@ -111,7 +111,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void evenFilter() throws Exception {
-        PredicateIntArr predicateInt = new Even();
+        PredicateInt predicateInt = new Even();
         int[] arr = {-4, -3, -2, -1, 0, 5, 6, 7, 8};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {-4, -2, 0, 6, 8};
@@ -120,7 +120,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void evenEmptyFilter() throws Exception {
-        PredicateIntArr predicateInt = new Even();
+        PredicateInt predicateInt = new Even();
         int[] arr = {};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
@@ -129,7 +129,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void evenNullFilter() throws Exception {
-        PredicateIntArr predicateInt = new Even();
+        PredicateInt predicateInt = new Even();
         int[] arr = null;
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
@@ -138,7 +138,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void moreHundredFilter() throws Exception {
-        PredicateIntArr predicateInt = new MoreHundred();
+        PredicateInt predicateInt = new MoreHundred();
         int[] arr = {-400, -300, -200, -100, 0, 500, 600, 700, 800};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {500, 600, 700, 800};
@@ -147,7 +147,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void moreHundredEmptyFilter() throws Exception {
-        PredicateIntArr predicateInt = new MoreHundred();
+        PredicateInt predicateInt = new MoreHundred();
         int[] arr = {};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
@@ -156,7 +156,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void moreHundredNullFilter() throws Exception {
-        PredicateIntArr predicateInt = new MoreHundred();
+        PredicateInt predicateInt = new MoreHundred();
         int[] arr = null;
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
@@ -165,7 +165,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void primeFilter() throws Exception {
-        PredicateIntArr predicateInt = new Prime();
+        PredicateInt predicateInt = new Prime();
         int[] arr = {-7, -6, -5, -4, -1, 0, 1, 2, 8, 117};
         arr = IntArrayUtils.filter(arr, predicateInt);
         System.out.println(IntArrayUtils.toString(arr));
@@ -175,7 +175,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void primeEmptyFilter() throws Exception {
-        PredicateIntArr predicateInt = new Prime();
+        PredicateInt predicateInt = new Prime();
         int[] arr = {};
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};
@@ -184,7 +184,7 @@ public class IntArrayUtilsTest {
 
     @Test
     public void primeNullFilter() throws Exception {
-        PredicateIntArr predicateInt = new Prime();
+        PredicateInt predicateInt = new Prime();
         int[] arr = null;
         arr = IntArrayUtils.filter(arr, predicateInt);
         int[] result = {};

@@ -101,7 +101,7 @@ public final class IntArrayUtils {
         return randArr;
     }
 
-    public static int[] filter(int[] arr, PredicateIntArr predicate) {
+    public static int[] filter(int[] arr, PredicateInt predicate) {
         if (arr == null) {
             int[] tryArr = {};
             return tryArr;

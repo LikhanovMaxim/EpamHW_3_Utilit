@@ -1,7 +1,7 @@
 package IntArrayUtils;
 
 
-final class Even implements PredicateIntArr {
+final class Even implements PredicateInt {
 
     @Override
     public boolean apply(int value) {
