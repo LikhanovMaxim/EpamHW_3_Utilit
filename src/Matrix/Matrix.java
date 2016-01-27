@@ -199,10 +199,10 @@ public class Matrix implements BrilliantMatrix {
     @Override
     public String toString() {
         String result = "{";
-        for (int rows = 0; rows < elements.length; rows++) {
+        for (double[] element : elements) {
             result += "{";
             for (int columns = 0; columns < elements[0].length; columns++) {
-                result += elements[rows][columns] + " ";
+                result += element[columns] + " ";
             }
             result += "}\n";
         }
